@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>VND Detector</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link id="page_favicon" href="/static/img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <!-- <link rel="stylesheet" href="static/css/animate.css"> -->
+  <link rel="stylesheet" href="static/css/main.css">
+  
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <div class="container">
+    <section class="section is-medium section-main">
+        <h1 class="text-grads-1">$v$ Money Money Money $v$</h1>
+        <div class="tile is-ancestor">
+          <div class="tile is-parent tile-main">
+            <div class="tile is-child box box-main">
+              <div class="box-intro">
+                  <div class="box-intro-inner">
+                    <h2 class="title text-grads-2">Show me your money!</h2>
+                  </div>
+              </div>
+              <article class="tile is-child box-upload-file">                    
+                <div id="my-camera"></div>
+                <form id="form-capture-image">
+                  <input type="hidden" value="" id="input-data-uri">
+                  <a href="#" class="button btn-capture-image is-primary is-medium" data-amount="10000">10K</a>
+                  <a href="#" class="button btn-capture-image is-info is-medium" data-amount="20000">20K</a>
+                  <a href="#" class="button btn-capture-image is-success is-medium" data-amount="50000">50K</a>
+                </form>
+                <div id="loading"></div>
+                <div id="results"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+  </div>
+  
+  
+
+
+  <!-- <script src="static/js/vendor/modernizr-3.7.1.min.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="static/js/vendor/jquery.min.js"><\/script>')</script>
+  <!-- <script src="static/js/vendor/dropzone/min/dropzone.min.js"></script>-->
+  <script src="static/js/vendor/webcam.min.js"></script>
+  <script src="static/js/main.js"></script>
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <!-- <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>-->
+</body>
+
+</html>
