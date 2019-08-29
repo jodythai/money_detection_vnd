@@ -9,7 +9,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 app.register_blueprint(homepage)
-app.register_blueprint(upload)
 app.register_blueprint(predict)
 
 if __name__ == '__main__':

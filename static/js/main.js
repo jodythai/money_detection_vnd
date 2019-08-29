@@ -43,41 +43,41 @@ $('.btn-capture-image').on('click', function(e) {
 
   Webcam.snap(function(data_uri) {
     // display results in page
-    readURL(data_uri, '#input-data-uri')
+    // readURL(data_uri, '#input-data-uri')
+    let json_data = {'data-uri': data_uri }
 
-    $('#results').removeClass('hidden')
-    $('#taken-photo').attr('src', data_uri)
-  });
-});
+    $.ajax({
+      type: 'POST',
+      url: '/predict/',
+      processData: false,
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      data: JSON.stringify(json_data),
+      success: function(data) {
+        $('#results').removeClass('hidden')
+        $('#taken-photo').attr('src', data_uri)
+        $('#prediction').text(data['label'])
+        
+        html = '<ul>'
+        for( let i = 0; i < data['probs'].length; i++) {
+          data_splitted = data['probs'][i]
 
-$('#predict-now').on('click', function(e) {
-  e.preventDefault();
+          html += '<li><span class="num">' + data_splitted[0] + '</span> <span class="prob">'+ data_splitted[1] + '</span></li>'
+        }
+        html += '</ul>'
 
-  taken_photo = $('#taken-photo').attr('src')
-  let json_data = {'data-uri': taken_photo }
-
-  $.ajax({
-    type: 'POST',
-    url: '/upload/',
-    processData: false,
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    data: JSON.stringify(json_data),
-    success: function(data) {
-      $('#prediction').text(data['label'])
-      
-      html = '<ul>'
-      for( let i = 0; i < data['probs'].length; i++) {
-        data_splitted = data['probs'][i]
-
-        html += '<li><span class="num">' + data_splitted[0] + '</span> <span class="prob">'+ data_splitted[1] + '</span></li>'
+        $('#probs').text('').append(html)
       }
-      html += '</ul>'
-
-      $('#probs').text('').append(html)
-    }
+    });
   });
 });
+
+// $('#predict-now').on('click', function(e) {
+//   e.preventDefault();
+
+//   taken_photo = $('#taken-photo').attr('src')
+  
+// });
 
 // Handle Predict Correction
 $('#form-predict-correction .btn-correction').on('click', function(e) {
