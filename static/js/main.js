@@ -30,8 +30,8 @@ jQuery.ajaxSetup({
 
 // HTML5 WEBCAM
 Webcam.set({
-  width: 640,
-  height: 480,
+  width: CAPTURE_IMG_WIDTH,
+  height: CAPTURE_IMG_HEIGHT,
   image_format: 'jpeg',
   jpeg_quality: 90
 });
@@ -51,7 +51,7 @@ $('.btn-capture-image').on('click', function(e) {
 
     $.ajax({
       type: 'POST',
-      url: '/upload-image/',
+      url: '/upload/',
       processData: false,
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
