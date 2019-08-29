@@ -40,29 +40,35 @@ Webcam.attach( '#my-camera' );
 let form_capture = document.getElementById('form-capture-image')
 $('.btn-capture-image').on('click', function(e) {
   e.preventDefault();
-  
-  amount = $(this).attr('data-amount');
 
   Webcam.snap(function(data_uri) {
     // display results in page
     readURL(data_uri, '#input-data-uri')
 
-    let formdata_capture = {'amount': amount, 'data-uri': data_uri }
-
-    $.ajax({
-      type: 'POST',
-      url: '/upload/',
-      processData: false,
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-      data: JSON.stringify(formdata_capture),
-      success: function(data) {
-        $('#results').text('')
-        $('#results').append("<h3 class=\"title text-grads-3\">Image saved</h3><img src=\"" + data_uri + "\" alt='' width='" + CAPTURE_IMG_WIDTH/2 + "' height='" + CAPTURE_IMG_HEIGHT/2 + "'/>")
-      }
-    });
+    $('#results').removeClass('hidden')
+    $('#taken-photo').attr('src', data_uri)
   });
-})
+});
+
+$('#predict-now').on('click', function(e) {
+  e.preventDefault();
+
+  taken_photo = $('#taken-photo').attr('src')
+  let json_data = {'data-uri': taken_photo }
+
+  $.ajax({
+    type: 'POST',
+    url: '/upload/',
+    processData: false,
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify(json_data),
+    success: function(data) {
+      $('#prediction').text(data['prediction'])
+      $('#probs').text(data['probs'])
+    }
+  });
+});
 
 // Handle Predict Correction
 $('#form-predict-correction .btn-correction').on('click', function(e) {

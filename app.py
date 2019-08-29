@@ -4,26 +4,24 @@ import sys
 import datetime
 import db_init as db
 import tensorflow as tf
-from blueprints import homepage, upload
-from flask import Flask
+from blueprints import *
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 app.register_blueprint(homepage)
 app.register_blueprint(upload)
+app.register_blueprint(predict)
 
 if __name__ == '__main__':
   app.run(debug=True)
 
 app.debug = True
 
-# load the trained model
-model = tf.keras.models.load_model("static/models/my_model_tl_sigmoid_rmsprop_acc9744.h5")
+# App Settings
+app.config['PREDICT_IMAGE_WIDTH'] = 120
+app.config['PREDICT_IMAGE_HEIGHT'] = 120
+app.config['UPLOAD_FOLDER'] = 'uploads'
 
-# change these two values to match the image width and height in the trained model
-IMAGE_WIDTH = 170
-IMAGE_HEIGHT = 170
-
-  
 # Handle predict correction
 @app.route('/predict-correction/', methods=['POST'])
 def predict_correction():

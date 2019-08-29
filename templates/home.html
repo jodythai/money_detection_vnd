@@ -16,12 +16,20 @@
                 <div id="my-camera"></div>
                 <form id="form-capture-image">
                   <input type="hidden" value="" id="input-data-uri">
-                  <a href="#" class="button btn-capture-image is-primary is-medium" data-amount="10000">10K</a>
-                  <a href="#" class="button btn-capture-image is-info is-medium" data-amount="20000">20K</a>
-                  <a href="#" class="button btn-capture-image is-success is-medium" data-amount="50000">50K</a>
+                  <a href="#" class="button btn-capture-image is-primary is-medium">Take Photo</a>
                 </form>
                 <div id="loading"></div>
-                <div id="results"></div>
+                <div id="results" class="hidden">
+                  <div class="inner">
+                    <h3 class="title text-grads-3">Your Photo</h3>
+                    <img id="taken-photo" src="#" alt="" />
+                    <div id="results-prediction">
+                      <p id="prediction"></p>
+                      <p id="probs"></p>
+                    </div>
+                  </div>
+                  <a href="#" id="predict-now" class="button is-primary is-medium">Predict Now</a>
+                </div>
               </article>
             </div>
           </div>
