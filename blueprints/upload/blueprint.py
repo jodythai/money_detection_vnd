@@ -34,7 +34,7 @@ def handle_upload():
     predict_img_width = current_app.config['PREDICT_IMAGE_WIDTH']
     predict_img_height = current_app.config['PREDICT_IMAGE_HEIGHT']
 
-    image = tf.image.decode_jpeg(img_decode, channels=1)
+    image = tf.image.decode_jpeg(img_decode, channels=3)
     image = tf.image.resize(image, [predict_img_width, predict_img_height])
     image = (255 - image) / 255.0  # normalize to [0,1] range
     image = tf.reshape(image, (1, predict_img_width, predict_img_height, 3))
