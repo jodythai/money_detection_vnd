@@ -65,7 +65,15 @@ $('#predict-now').on('click', function(e) {
     data: JSON.stringify(json_data),
     success: function(data) {
       $('#prediction').text(data['label'])
-      $('#probs').text(data['probs'])
+      
+      html = '<ul>'
+      for( let i = 0; i < data['probs'].length; i++) {
+        data_splitted = data['probs'][i].split(',')
+        html += '<li><span class="num">' + data_splitted[0] + '</span> <span class="prob">'+ data['probs'][i].split(',') + '</span></li>'
+      }
+      html += '</ul>'
+
+      $('#probs').text('').append(html)
     }
   });
 });
