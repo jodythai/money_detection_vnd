@@ -64,7 +64,7 @@ $('#predict-now').on('click', function(e) {
     dataType: 'json',
     data: JSON.stringify(json_data),
     success: function(data) {
-      $('#prediction').text(data['prediction'])
+      $('#prediction').text(data['label'])
       $('#probs').text(data['probs'])
     }
   });

@@ -18,8 +18,8 @@ if __name__ == '__main__':
 app.debug = True
 
 # App Settings
-app.config['PREDICT_IMAGE_WIDTH'] = 120
-app.config['PREDICT_IMAGE_HEIGHT'] = 120
+app.config['PREDICT_IMAGE_WIDTH'] = 192
+app.config['PREDICT_IMAGE_HEIGHT'] = 192
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # Handle predict correction

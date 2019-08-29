@@ -2,6 +2,7 @@ import re
 import os
 import base64
 import time
+import sys
 import numpy as np
 import tensorflow as tf
 from flask import Blueprint, request, jsonify
@@ -10,7 +11,18 @@ from flask import current_app
 upload = Blueprint('upload', __name__)
 
 # load the trained model
-model = tf.keras.models.load_model("static/models/my_model.h5")
+model = tf.keras.models.load_model("static/models/vnd_classifier_Minhdh.h5")
+
+labels = {'1000': 0,
+          '10000': 1,
+          '100000': 2,
+          '2000': 3,
+          '20000': 4,
+          '200000': 5,
+          '5000': 6,
+          '50000': 7,
+          '500000': 8
+          }
 
 # Homepage
 @upload.route('/upload/', methods=['GET', 'POST'])
@@ -40,6 +52,14 @@ def handle_upload():
     image = tf.reshape(image, (1, predict_img_width, predict_img_height, 3))
 
     probabilites = model.predict(image)
-    label = np.argmax(probabilites, axis=1)
-  
-  return jsonify({'label': label, 'probs': str(probabilites)})
+    label = np.argmax(probabilites, axis=1).tolist()
+    print('label:' + str(label[0]), file=sys.stdout)
+    label = [val for val, key in labels.items() if key == label[0]]
+
+    probs = probabilites[0].tolist()
+    for val, key in labels.items():
+      probs[key] = [val, probs[key]]
+
+    print(probs, file=sys.stdout)
+
+  return jsonify({'label': label, 'probs': probs})
