@@ -68,8 +68,9 @@ $('#predict-now').on('click', function(e) {
       
       html = '<ul>'
       for( let i = 0; i < data['probs'].length; i++) {
-        data_splitted = data['probs'][i].split(',')
-        html += '<li><span class="num">' + data_splitted[0] + '</span> <span class="prob">'+ data['probs'][i].split(',') + '</span></li>'
+        data_splitted = data['probs'][i]
+
+        html += '<li><span class="num">' + data_splitted[0] + '</span> <span class="prob">'+ data_splitted[1] + '</span></li>'
       }
       html += '</ul>'
 

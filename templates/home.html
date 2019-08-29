@@ -18,7 +18,7 @@
                   <input type="hidden" value="" id="input-data-uri">
                   <a href="#" class="button btn-capture-image is-primary is-medium">Take Photo</a>
                 </form>
-                <div id="loading" class="hidden"><progress class="progress is-danger" max="100">20%</progress></div>
+
                 <div id="results" class="hidden">
                   <div class="inner">
                     <h3 class="title text-grads-3">Your Photo</h3>
@@ -27,9 +27,11 @@
                       <p id="prediction" class="title text-grads-1"></p>
                       <p id="probs"></p>
                     </div>
+                    <div id="loading" class="hidden"><progress class="progress is-danger" max="100">20%</progress></div>
+                    <a href="#" id="predict-now" class="button is-primary is-medium">Predict Now</a>
                   </div>
-                  <a href="#" id="predict-now" class="button is-primary is-medium">Predict Now</a>
                 </div>
+
               </article>
             </div>
           </div>
