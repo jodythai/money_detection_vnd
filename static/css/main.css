@@ -65,6 +65,8 @@ h1 {
   background: url("../img/pattern-4.jpg") repeat;
   text-align: center;
   padding: 40px;
+  transition: 0.4s;
+  transition-timing-function: ease-in-out;
 }
 
 .box-intro .title {
@@ -84,8 +86,36 @@ h1 {
   width: 40%;
 }
 
+.wrapper {
+  width: 200%;
+  overflow: hidden;
+}
+
+.box-upload-file {
+  float: left;
+  transition: 0.4s;
+  transform: translate(30%, 0);
+  transition-timing-function: ease-in-out;
+}
+
+.box-results {
+  float: left;
+  transition: 0.4s;
+  transform: translate(50%, 0);
+  transition-timing-function: ease-in-out;
+  opacity: 0;
+}
+
+#go-back {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  -webkit-text-fill-color: white;
+}
+
 #results {
   margin: 20px auto;
+  position: relative;
 }
 
 #results ul {
@@ -135,6 +165,20 @@ h1 {
   to {
     filter: hue-rotate(-360deg);
   }
+}
+
+.anim-transform-box {
+  transition: 0.4s;
+  transform:  scale(0.4) 
+              translate(-70%, -40%);
+  transition-timing-function: ease-in-out;
+}
+
+.anim-show-result {
+  transition: 0.4s;
+  transform: translate(-50%, 0);
+  transition-timing-function: ease-in-out;
+  opacity: 1;
 }
 
 /*-----------------------------------*\

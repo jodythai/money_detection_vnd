@@ -54,9 +54,11 @@ $('.btn-capture-image').on('click', function(e) {
       dataType: 'json',
       data: JSON.stringify(json_data),
       success: function(data) {
-        $('#results').removeClass('hidden')
-        $('#taken-photo').attr('src', data_uri)
-        $('#prediction').text(data['label'])
+        $('.box-upload-file').addClass('anim-transform-box');
+        $('.box-results').removeClass('hidden').addClass('anim-show-result');
+        $('#results-prediction').removeClass('hidden')
+        $('#taken-photo').attr('src', data_uri);
+        $('#prediction').text(data['label']);
         
         html = '<ul>'
         for( let i = 0; i < data['probs'].length; i++) {
@@ -67,17 +69,19 @@ $('.btn-capture-image').on('click', function(e) {
         html += '</ul>'
 
         $('#probs').text('').append(html)
+
+        // $('.box-main').css('height', $('.box-results').height());
       }
     });
   });
 });
 
-// $('#predict-now').on('click', function(e) {
-//   e.preventDefault();
-
-//   taken_photo = $('#taken-photo').attr('src')
-  
-// });
+$('#go-back').on('click', function(e) {
+  e.preventDefault();
+  $('.box-upload-file').removeClass('anim-transform-box');
+  $('.box-results').removeClass('anim-show-result')
+  $('#results-prediction').addClass('hidden')
+});
 
 // Handle Predict Correction
 $('#form-predict-correction .btn-correction').on('click', function(e) {

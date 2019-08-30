@@ -7,31 +7,32 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent tile-main">
             <div class="tile is-child box box-main">
-              <div class="box-intro">
-                  <div class="box-intro-inner">
-                    <h2 class="title text-grads-2">Show me your money!</h2>
-                  </div>
-              </div>
-              <article class="tile is-child box-upload-file">                    
-                <div id="my-camera"></div>
-                <form id="form-capture-image">
-                  <a href="#" class="button btn-capture-image is-primary is-medium">Predict Now</a>
-                </form>
 
-                <div id="loading" class="hidden"><progress class="progress is-danger" max="100">20%</progress></div>
-
-                <div id="results" class="hidden">
-                  <div class="inner">
-                    <h3 class="title text-grads-3">Your Photo</h3>
-                    <img id="taken-photo" src="#" alt="" />
-                    <div id="results-prediction">
-                      <p id="prediction" class="title text-grads-1"></p>
-                      <p id="probs"></p>
+              <div class="wrapper">
+                  <article class="tile is-child box-upload-file">        
+                    <h2 class="title text-grads-2">Show me your money!</h2>            
+                    <div id="my-camera"></div>
+                    <form id="form-capture-image">
+                      <a href="#" class="button btn-capture-image is-primary is-medium">Predict Now</a>
+                    </form>
+                  </article>
+                  
+                  <article class="tile is-child box-results">                    
+                    <div id="loading" class="hidden"><progress class="progress is-danger" max="100">20%</progress></div>
+    
+                    <div id="results">
+                      <div class="inner">
+                        <h3 class="title text-grads-3">Your Results <a href="#" id="go-back" class="button is-info">Go Back</a></h3>
+                        <img id="taken-photo" src="static/img/1567072883.195046.jpg" alt="" />
+                        <div id="results-prediction">
+                          <p id="prediction" class="title text-grads-1"></p>
+                          <p id="probs"></p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-              </article>
+                  </article>
+              </div>
+              
             </div>
           </div>
         </div>

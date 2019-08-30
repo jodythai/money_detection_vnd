@@ -11,7 +11,7 @@ from flask import current_app
 predict = Blueprint('predict', __name__)
 
 # load the trained model
-model = tf.keras.models.load_model("static/models/univer_model.h5")
+model = tf.keras.models.load_model("static/models/vnd_classifier_Minhdh.h5")
 
 labels = {'1000': 0,
           '10000': 1,
